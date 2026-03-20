@@ -56,7 +56,7 @@
 import ContactCard from "../components/ContactCard.vue";
 import InputSearch from "../components/InputSearch.vue";
 import ContactList from "../components/ContactList.vue";
-import ContactService from "../services/contact.service.js";
+import ContactService from "../services/contact.service";
 
 export default {
   components: {

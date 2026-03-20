@@ -12,7 +12,7 @@
 
 <script>
 import ContactForm from "./components/ContactForm.vue";
-import ContactService from "./services/contact.service";
+import ContactService from "./services/contact.service.js";
 
 export default {
   components: {
@@ -33,7 +33,6 @@ export default {
         this.contact = await ContactService.get(id);
       } catch (error) {
         console.log(error);
-        // Chuyển sang trang NotFound nếu không tìm thấy id liên hệ
         this.$router.push({
           name: "notfound",
           params: {
@@ -48,7 +47,8 @@ export default {
     async updateContact(data) {
       try {
         await ContactService.update(this.contact._id, data);
-        this.message = "Liên hệ được cập nhật thành công.";
+        alert("Liên hệ được cập nhật thành công.");
+        this.$router.push({ name: "contactbook" });
       } catch (error) {
         console.log(error);
       }

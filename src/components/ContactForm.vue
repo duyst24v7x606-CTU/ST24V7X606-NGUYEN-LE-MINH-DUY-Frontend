@@ -5,41 +5,45 @@
       <Field
         name="name"
         type="text"
-        class="form-group-input"
+        class="form-control"
         v-model="contactLocal.name"
       />
       <ErrorMessage name="name" class="error-feedback" />
     </div>
+
     <div class="form-group">
       <label for="email">E-mail</label>
       <Field
         name="email"
         type="email"
-        class="form-group-input"
+        class="form-control"
         v-model="contactLocal.email"
       />
       <ErrorMessage name="email" class="error-feedback" />
     </div>
+
     <div class="form-group">
       <label for="address">Địa chỉ</label>
       <Field
         name="address"
         type="text"
-        class="form-group-input"
+        class="form-control"
         v-model="contactLocal.address"
       />
       <ErrorMessage name="address" class="error-feedback" />
     </div>
+
     <div class="form-group">
       <label for="phone">Điện thoại</label>
       <Field
         name="phone"
         type="tel"
-        class="form-group-input"
+        class="form-control"
         v-model="contactLocal.phone"
       />
       <ErrorMessage name="phone" class="error-feedback" />
     </div>
+
     <div class="form-group form-check">
       <input
         name="favorite"
@@ -51,15 +55,17 @@
         <strong>Liên hệ yêu thích</strong>
       </label>
     </div>
+
     <div class="form-group">
-      <button class="btn btn-primary">Lưu</button>
+      <button class="btn btn-primary"><i class="fas fa-save"></i> Lưu</button>
+
       <button
         v-if="contactLocal._id"
         type="button"
         class="ml-2 btn btn-danger"
         @click="deleteContact"
       >
-        Xóa
+        <i class="fas fa-trash"></i> Xóa
       </button>
     </div>
   </Form>
@@ -95,7 +101,7 @@ export default {
         ),
     });
     return {
-      contactLocal: this.contact,
+      contactLocal: { ...this.contact },
       contactFormSchema,
     };
   },
@@ -104,12 +110,12 @@ export default {
       this.$emit("submit:contact", this.contactLocal);
     },
     deleteContact() {
-      this.$emit("delete:contact", this.contactLocal.id);
+      this.$emit("delete:contact", this.contactLocal._id);
     },
   },
 };
 </script>
 
 <style scoped>
-@import "@/assets/form.css";
+@import "../assets/form.css";
 </style>
